@@ -37,7 +37,7 @@ if pct list | grep -qw "$number"; then
 fi
 
 # Create and start the container on local-lvm storage
-pct create $number --storage local-lvm --ostype alpine --hostname "$name" --net0 name=eth0,ip="$ip",gw="$gw",bridge="$bridge" --memory 512 --cores $cpu --unprivileged 1 --cmode shell --onboot 1 local:vztmpl/$latest_alpine_template
+pct create $number --storage local-lvm --ostype alpine --hostname "$name" --net0 name=eth0,ip="$ip",gw="$gw",bridge="$bridge" --memory 512 --cores $cpu --unprivileged 1 --cmode shell --onboot 1 --rootfs local-lvm:1 $latest_alpine_template
 pct start $number
 
 # Basic container setup
